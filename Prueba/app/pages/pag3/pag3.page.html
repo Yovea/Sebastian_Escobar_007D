@@ -1,0 +1,71 @@
+<ion-header class="ion-padding" style="background-color: black;">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/"
+        text="back"
+        color="primary"
+        mode="ios">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/garfield.jpg"></ion-img>        
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="tg1">Registro de usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-card color="medium">
+    <ion-item color="medium">
+      <ion-label position="fixed">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="newDato.nombre" placeholder="Ingrese su nombre" required></ion-input>
+    </ion-item>
+    
+    <ion-item color="medium">
+      <ion-label position="fixed">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="newDato.apellido" placeholder="Ingrese su apellido" required></ion-input>
+    </ion-item>
+
+    <ion-item color="medium">
+      <ion-label position="fixed">Edad</ion-label>
+      <ion-input type="number" [(ngModel)]="newDato.edad" placeholder="Ingrese su edad" required></ion-input>
+    </ion-item>
+
+    <ion-item color="medium">
+      <ion-label position="fixed">Rut</ion-label>
+      <ion-input type="number" [(ngModel)]="newDato.rut" placeholder="Rut sin puntos ni guión" required></ion-input>
+    </ion-item>
+
+    <ion-button (click)="addDatos()" expand="full" routerLink="/pag1">
+    Agregar Datos
+    </ion-button>
+  </ion-card>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <ion-list #myList color="dark" class="bg">
+    <ion-list-header>
+      <ion-label color="light">Mis Datos</ion-label>
+    </ion-list-header>
+
+    <ion-list class="bg">
+      <ion-item-sliding *ngFor="let dato of datos">
+        <ion-item>
+          <ion-label text-wrap> 
+            <h3>{{dato.nom}}</h3>
+            <ion-text color="secondary">
+              <p>{{dato.apellido}}</p>
+            </ion-text>
+            <p>{{dato.modified | date: 'short'}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="secondary" (click)="updateDatos(dato)">Actualizar</ion-item-option>
+       <ion-item-option color="danger" (click)="deleteDatos(dato)">Eliminar</ion-item-option> 
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-list>
+</ion-content>

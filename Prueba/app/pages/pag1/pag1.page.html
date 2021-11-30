@@ -1,0 +1,30 @@
+<ion-header class="ion-padding" style="background-color: black">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <ion-img src="/assets/garfield.jpg"></ion-img>        
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="tg">MichiHouse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <p class="t">Menú de navegación</p>
+  <ion-card>
+    <ion-list class="bg1">
+      <ion-item *ngFor="let c of componentes"
+                [routerLink]="c.redirecTo"
+                detail="true"
+                color="danger">
+        <ion-icon [name]="c.icon" slot="start" name="add" color="dark"></ion-icon>
+        {{c.name}}
+      </ion-item>
+    </ion-list>
+  </ion-card>  
+</ion-content>
